@@ -2,7 +2,7 @@
   "name": "Repair Price Tool",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Repair cost display tool for MD and Sentrix",
+  "description": "Repair price display tool for MD and Sentrix",
   "homepage_url": "http://fake.com",
   "icons": {
     "16": "icons/icon16.png",
@@ -17,12 +17,14 @@
     "persistent": true
   },
   "permissions": [
-    "https://www.mobiledefenders.com/*"
+    "https://www.mobiledefenders.com/*",
+    "https://www.mobilesentrix.com/*"
   ],
   "content_scripts": [
     {
       "matches": [
-        "https://www.mobiledefenders.com/*"
+        "https://www.mobiledefenders.com/*",
+        "https://www.mobilesentrix.com/*"
       ],
       "css": [
         "src/inject/inject.css"
@@ -30,7 +32,8 @@
     },
     {
       "matches": [
-        "https://www.mobiledefenders.com/*"
+        "https://www.mobiledefenders.com/*",
+        "https://www.mobilesentrix.com/*"
       ],
       "js": [
         "src/inject/inject.js"
