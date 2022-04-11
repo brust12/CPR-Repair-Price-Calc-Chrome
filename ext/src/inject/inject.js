@@ -47,7 +47,7 @@ chrome.extension.sendMessage({}, function(response) {
 		console.log(isTablet);
 
 		for(i=0,len = elements.length; i<len; i++){
-			if(elements[i].parentElement.className =="old-price"){
+			if(elements[i].parentElement.className =="old-price" || elements[i].parentElement.parentElement.id == "cartblock"){
 				continue;
 			}
 			var price = elements[i].textContent;
@@ -60,7 +60,8 @@ chrome.extension.sendMessage({}, function(response) {
 			var part = document.createElement('div');
 
 			part.style.fontSize ="smaller";
-			span.style.color = "red"; // apply your style
+			span.style.color = "red"; 
+
 			span.appendChild(document.createTextNode(" Repair Price: $"+num));
 			var part_price = num - 55;;
 			part.appendChild(document.createTextNode("Part Price: $"+Number(part_price.toPrecision(2)-.01)));
