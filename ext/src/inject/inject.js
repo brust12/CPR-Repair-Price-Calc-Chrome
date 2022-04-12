@@ -54,7 +54,7 @@ chrome.extension.sendMessage({}, function(response) {
 
 			span.appendChild(document.createTextNode(" Repair Price: $"+num));
 			var part_price = num - labor;;
-			part.appendChild(document.createTextNode("Part Price: $"+Number(part_price.toPrecision(2)-.01)+" Labor: $"+labor));
+			part.appendChild(document.createTextNode("Part Price: $"+Number(part_price.toPrecision(2)-.01)+" - Labor: $"+labor));
 
 			var parent = elements[i].parentElement.parentElement.parentElement;
 
