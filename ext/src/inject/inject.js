@@ -37,7 +37,7 @@ chrome.extension.sendMessage({}, function(response) {
 		// 	console.log("TRUE")
 		// }
 
-		var elements = document.getElementsByClassName("price"),i,len;
+		
 		var isTablet;
 		if(document.URL.includes("ipad")){
 			isTablet = true;
@@ -46,6 +46,7 @@ chrome.extension.sendMessage({}, function(response) {
 		}
 		console.log(isTablet);
 
+		var elements = document.getElementsByClassName("price"),i,len;
 		for(i=0,len = elements.length; i<len; i++){
 			if(elements[i].parentElement.className =="old-price" || elements[i].parentElement.parentElement.id == "cartblock"){
 				continue;
