@@ -26,11 +26,11 @@ chrome.extension.sendMessage({}, function(response) {
 		clearInterval(readyStateCheckInterval);
 		var labor = 55;
 		var device_type = "PHONE";
-		if(document.URL.includes("ipad")){
+		if(document.URL.includes("ipad") || document.URL.includes("surface")){
 			device_type = "TABLET";
 			labor = 75;
 		}
-		if(document.URL.includes("game-console")){
+		if(document.URL.includes("game-console") ||document.URL.includes("sony") ||document.URL.includes("xbox")||document.URL.includes("nintendo")){
 			device_type = "CONSOLE";
 			labor =100;
 		}
