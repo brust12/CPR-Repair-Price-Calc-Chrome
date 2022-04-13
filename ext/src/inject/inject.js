@@ -22,7 +22,7 @@ function calcRepair(partcost,labor){
 
 chrome.extension.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
-	if (document.readyState === "complete") {
+	if (document.readyState == "complete") {
 		clearInterval(readyStateCheckInterval);
 		var labor = 55;
 		var device_type = "PHONE";
@@ -41,25 +41,33 @@ chrome.extension.sendMessage({}, function(response) {
 			if(elements[i].parentElement.className =="old-price" || elements[i].parentElement.parentElement.id == "cartblock"){ //remove prices for sale and cart on Sentrix
 				continue;
 			}
+			if((document.URL.includes("checkout"))){
+				break;
+			}
 			var cost = elements[i].textContent;
 			cost = cost.replace('$','')
 
 
 			var num = calcRepair(Number(cost),labor); 
 
-			var span = document.createElement('span');
-			var part = document.createElement('div');
-			part.style.fontSize ="smaller";
-			span.style.color = "red"; 
+			var repair_div = document.createElement('div');
+			var costs_div = document.createElement('div');
+			costs_div.style.fontSize ="smaller";
+			costs_div.style.color = "black";
+			// costs_div.style.fontWeight = "bold";
+			// part.style.float = "left";
+			repair_div.style.color = "red"; 
+			// repair_div.style.fontWeight = "bold";
 
-			span.appendChild(document.createTextNode(" Repair Price: $"+num));
+			var breakr = document.createElement("br");
+			repair_div.appendChild(document.createTextNode(" Repair Price: $"+num),breakr);
 			var part_price = num - labor;;
-			part.appendChild(document.createTextNode("Part Price: $"+Number(part_price.toPrecision(2)-.01)+" - Labor: $"+labor));
+			costs_div.appendChild(document.createTextNode("Part Price: $"+Number(part_price.toPrecision(2)-.01)+" - Labor: $"+labor));
 
-			var parent = elements[i].parentElement.parentElement.parentElement;
-
-			parent.insertBefore(span,parent.lastChild);
-			parent.insertBefore(part,parent.lastChild);
+			var parent = elements[i].parentElement.parentElement;
+			parent.insertBefore(breakr,parent.lastChild)
+			parent.insertBefore(repair_div,parent.lastChild);
+			parent.insertBefore(costs_div,parent.lastChild);
 		}
 	}
 	}, 10);
