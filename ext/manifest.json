@@ -1,7 +1,7 @@
 {
-  "name": "Repair Price Tool",
+  "name": "TomcatCPR Repair Price Tool",
   "version": "0.0.1",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "Repair price display tool for MD and Sentrix",
   "homepage_url": "http://fake.com",
   "icons": {
@@ -10,13 +10,7 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
-  "background": {
-    "scripts": [
-      "src/bg/background.js"
-    ],
-    "persistent": true
-  },
-  "permissions": [
+  "host_permissions": [
     "https://www.mobiledefenders.com/*",
     "https://www.mobilesentrix.com/*"
   ],
