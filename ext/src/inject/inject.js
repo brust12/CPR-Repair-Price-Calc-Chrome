@@ -25,7 +25,7 @@ function calcRepair(partcost,labor){
 function insert(){
     //check to see if were on a parts page or another page.
     let url = document.URL;
-    const blacklist =["tools","brands","refurbishing","accessories","checkout"];
+    const blacklist =["tools","brands/","refurbishing","accessories","checkout"];
     const tablets = ["ipad","surface","galaxy-tab"];
     const consoles = ["game-console","sony","xbox","nintendo","macbook-parts"];
 
