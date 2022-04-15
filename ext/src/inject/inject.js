@@ -69,8 +69,8 @@ function insert(){
         //Inserting the price elements
         var breakr = document.createElement("br");// for moving the price to a new line on Sentrix part page.
         repair_div.appendChild(document.createTextNode(" Repair Price: $"+repair_price),breakr);
-        var part_price = repair_price - labor;
-        costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price.toPrecision(2)-.01) + " - Labor: $" + labor));
+        var part_price = repair_price +.01 - labor;
+        costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price - .01) + " - Labor: $" + labor));
 
         var parent = part_item.parentElement.parentElement;
         parent.insertBefore(breakr,parent.lastChild);
