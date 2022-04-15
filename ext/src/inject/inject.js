@@ -9,11 +9,11 @@ function calcRepair(partcost,labor){
 	var mult;
 	if(partcost <= 9.99){
 		mult = 5;
-	}else if(partcost >10  &  partcost <= 24.99){
+	}else if(partcost >10  &  partcost <= 24.99) {
 		mult = 2.5;
 	}else if(partcost >25  &  partcost <= 49.99) {
 		mult =2.25;
-	}else if(partcost >50  &  partcost <= 99.99){
+	}else if(partcost >50  &  partcost <= 99.99) {
 		mult = 2.00;
 	}else if(partcost >100 &  partcost <= 199.99){
 		mult = 1.5;
@@ -28,18 +28,18 @@ function calcRepair(partcost,labor){
 function insert(){
     //Check to see if were on a parts page or another page.
     let url = document.URL;
-    const blacklist =["tools","brands/","refurbishing","accessories","checkout"];
+    const blacklist = ["tools","brands/","refurbishing","accessories","checkout"];
     if(blacklist.some((word) => url.includes(word))) return;
 
     //Set Labor 
-    const tablets = ["ipad","surface","galaxy-tab","samsung/tab"];
-    const consoles = ["game-console","sony","xbox","nintendo","macbook-parts"];
+    const tablets   = ["ipad","surface","galaxy-tab","samsung/tab"];
+    const consoles  = ["game-console","sony","xbox","nintendo","macbook-parts"];
     var labor = 55;
-    if(tablets.some((word) => url.includes(word)))    labor = 75;
-    if(consoles.some((word)=> url.includes(word)))    labor = 100;
+    if(tablets.some((word) => url.includes(word)))   labor = 75;
+    if(consoles.some((word)=> url.includes(word)))   labor = 100;
 
-    //ADDING PRICES
-    var elements = document.getElementsByClassName("price"),i,len;
+    //Loop for adding prices
+    var elements = document.getElementsByClassName("price");
     for(const part_item of elements){ //Looping through each price element on the page.
         let parentclass = part_item.parentElement.className;
         if(parentclass == "old-price") continue; //skip if the price is a sale item.
@@ -57,20 +57,20 @@ function insert(){
         var repair_price = calcRepair(Number(cost),labor); 
 
         var repair_div = document.createElement('div');
-        repair_div.style.color = "#e3051b";
+        repair_div.style.color      = "#e3051b";
         repair_div.style.fontWeight = "bold";
 
         var costs_div = document.createElement('div');
-        costs_div.style.color = "black";
+        costs_div.style.color       = "black";
         if(url.includes("mobiledefenders")){
-            repair_div.style.paddingTop = "5px";
+            repair_div.style.paddingTop    = "5px";
             repair_div.style.paddingBottom = "5px";
         }
         //Inserting the price elements
         var breakr = document.createElement("br");// for moving the price to a new line on Sentrix part page.
         repair_div.appendChild(document.createTextNode(" Repair Price: $"+repair_price),breakr);
         var part_price = repair_price - labor;
-        costs_div.appendChild(document.createTextNode("Part Price: $"+Number(part_price.toPrecision(2)-.01)+" - Labor: $"+labor));
+        costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price.toPrecision(2)-.01) + " - Labor: $" + labor));
 
         var parent = part_item.parentElement.parentElement;
         parent.insertBefore(breakr,parent.lastChild);
