@@ -1,18 +1,21 @@
 /**
  * @author Riley Brust <brust.developer@gmail.com>
+ * @version 0.0.3
+ * @description Chrome extention that displays repair cost in the websites.
+ * @file inject.js
  */
 
 function calcRepair(partcost,labor){
 	var mult;
 	if(partcost <= 9.99){
 		mult = 5;
-	}else if(partcost >10 &  partcost<=24.99){
+	}else if(partcost >10  &  partcost <= 24.99){
 		mult = 2.5;
-	}else if(partcost >25  &  partcost<=49.99) {
+	}else if(partcost >25  &  partcost <= 49.99) {
 		mult =2.25;
-	}else if(partcost >50  &  partcost<=99.99){
+	}else if(partcost >50  &  partcost <= 99.99){
 		mult = 2.00;
-	}else if(partcost >100 &  partcost<=199.99){
+	}else if(partcost >100 &  partcost <= 199.99){
 		mult = 1.5;
 	}else if(partcost >200){
 		mult =1.25;
@@ -29,7 +32,7 @@ function insert(){
     if(blacklist.some((word) => url.includes(word))) return;
 
     //Set Labor 
-    const tablets = ["ipad","surface","galaxy-tab"];
+    const tablets = ["ipad","surface","galaxy-tab","samsung/tab"];
     const consoles = ["game-console","sony","xbox","nintendo","macbook-parts"];
     var labor = 55;
     if(tablets.some((word) => url.includes(word)))    labor = 75;
