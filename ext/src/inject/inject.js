@@ -40,9 +40,9 @@ function insert(){
 
     //Loop for adding prices
     var elements = document.getElementsByClassName("price");
-    for(const part_item of elements){ //Looping through each price element on the page.
+    for(const part_item of elements){               //Looping through each price element on the page.
         let parentclass = part_item.parentElement.className;
-        if(parentclass == "old-price") continue; //skip if the price is a sale item.
+        if(parentclass == "old-price") continue;    //skip if the price is a sale item.
 
         //Checking if the parent class is one that would contain parts or skipping if its another price. EX: the cart price.
         let parentClass4 = part_item.parentElement.parentElement.parentElement.parentElement;
