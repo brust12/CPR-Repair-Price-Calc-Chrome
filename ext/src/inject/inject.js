@@ -6,51 +6,42 @@ function calcRepair(partcost,labor){
 	var mult;
 	if(partcost <= 9.99){
 		mult = 5;
-	}else if(partcost >10 & partcost<=24.99){
+	}else if(partcost >10 &  partcost<=24.99){
 		mult = 2.5;
-	}else if(partcost>25 & partcost<=49.99) {
+	}else if(partcost>25  &  partcost<=49.99) {
 		mult =2.25;
-	}else if(partcost>50 &partcost<=99.99){
+	}else if(partcost>50  &  partcost<=99.99){
 		mult = 2.00;
-	}else if(partcost>100 & partcost<=199.99){
+	}else if(partcost>100 &  partcost<=199.99){
 		mult = 1.5;
 	}else if (partcost >200){
 		mult =1.25;
 	}
-	var price = (partcost*mult)+labor;
-	var rounded = Math.ceil(price/10)*10;
-	return Math.round(rounded)-.01;
+	var price = (partcost * mult) + labor;
+	var rounded = Math.ceil(price/10) * 10;
+	return Math.round(rounded) - .01;
 }
 
 function insert(){
-    //check to see if were on a parts page or another page.
+    //Check to see if were on a parts page or another page.
     let url = document.URL;
     const blacklist =["tools","brands/","refurbishing","accessories","checkout"];
-    const tablets = ["ipad","surface","galaxy-tab"];
-    const consoles = ["game-console","sony","xbox","nintendo","macbook-parts"];
-
     if(blacklist.some((word)=>url.includes(word))) return;
 
     //Set Labor 
+    const tablets = ["ipad","surface","galaxy-tab"];
+    const consoles = ["game-console","sony","xbox","nintendo","macbook-parts"];
     var labor = 55;
-    var device_type = "PHONE";
-    if(tablets.some((word)=>url.includes(word))) {
-        device_type = "TABLET";
-        labor = 75;
-    }
-    if(consoles.some((word)=>url.includes(word))) {
-        device_type = "CONSOLE/COMPUTER";
-        labor =100;
-    }
-    console.log(device_type);
+    if(tablets.some((word)=>url.includes(word)))    labor = 75;
+    if(consoles.some((word)=>url.includes(word)))   labor =100;
 
     //ADDING PRICES
     var elements = document.getElementsByClassName("price"),i,len;
-    for(const part_item of elements){ //Looping through all price elements on the page.
+    for(const part_item of elements){ //Looping through each price element on the page.
         let parentclass = part_item.parentElement.className;
         if(parentclass=="old-price") continue; //skip if the price is a sale item.
 
-        //Checking if the parent class is one that would contain parts or skipping if its another price. EX the cart price.
+        //Checking if the parent class is one that would contain parts or skipping if its another price. EX: the cart price.
         let parentClass4 = part_item.parentElement.parentElement.parentElement.parentElement;
         let parentClass3 = part_item.parentElement.parentElement.parentElement;
         if(!(parentClass4.className == "catalog-view-details-grid-hover"    //MD items page
@@ -84,6 +75,4 @@ function insert(){
         parent.insertBefore(costs_div,parent.lastChild);
     }
 }
-
 insert();
-console.log("V 0.0.2");
