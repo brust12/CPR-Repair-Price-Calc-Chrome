@@ -12,7 +12,8 @@
   "default_locale": "en",
   "host_permissions": [
     "https://www.mobiledefenders.com/*",
-    "https://www.mobilesentrix.com/*"
+    "https://www.mobilesentrix.com/*",
+	"https://www.wholesalegadgetparts.com/"
   ],
   "content_scripts": [
     {
@@ -27,7 +28,8 @@
     {
       "matches": [
         "https://www.mobiledefenders.com/*",
-        "https://www.mobilesentrix.com/*"
+        "https://www.mobilesentrix.com/*",
+		"https://www.wholesalegadgetparts.com/*"
       ],
       "js": [
         "src/inject/inject.js"
