@@ -5,25 +5,6 @@
  * @file inject.js
  */
 
-function calcRepair(partcost,labor){
-	var mult;
-	if(partcost <= 9.99){
-		mult = 5;
-	}else if(partcost >=10  &  partcost <= 24.99) {
-		mult = 2.5;
-	}else if(partcost >=25  &  partcost <= 49.99) {
-		mult =2.25;
-	}else if(partcost >=50  &  partcost <= 99.99) {
-		mult = 2.00;
-	}else if(partcost >=100 &  partcost <= 199.99){
-		mult = 1.5;
-	}else if(partcost >=200){
-		mult =1.25;
-	}
-	var price = (partcost * mult) + labor;
-	var rounded = Math.ceil(price/10) * 10;
-	return Math.round(rounded) - .01;
-}
 
 function addHTML(labor,part_item,url){
     var cost = part_item.textContent;
@@ -33,8 +14,10 @@ function addHTML(labor,part_item,url){
     var repair_div = document.createElement('div');
     repair_div.style.color      = "#e3051b";
     repair_div.style.fontWeight = "bold";
+    repair_div.className ="repair-div";
 
     var costs_div = document.createElement('div');
+    costs_div.className ="repair-div";
     costs_div.style.color       = "black";
     if(url.includes("mobiledefenders")){
         repair_div.style.paddingTop    = "5px";
@@ -50,6 +33,7 @@ function addHTML(labor,part_item,url){
        parent.insertBefore(breakr,parent.lastChild);
        parent.insertBefore(repair_div,parent.lastChild);
        parent.insertBefore(costs_div,parent.lastChild);
+
     }
 
 function main(){
@@ -66,12 +50,9 @@ function main(){
     if(consoles.some((word)=> url.includes(word)))   labor = 100;
     var elements;
     //Loop for adding prices
-    if(url.includes("sentrix") || url.includes("defenders")){
-         elements = document.getElementsByClassName("price");
-    }
-    if(url.includes("wholesale")){
-         elements = document.getElementsByClassName("currency");
-    }
+    if(url.includes("sentrix") || url.includes("defenders"))    elements = document.getElementsByClassName("price");
+    if(url.includes("wholesale"))                               elements = document.getElementsByClassName("currency");
+    
     for(const part_item of elements){   
         //Looping through each price element on the page.
         let parentclass = part_item.parentElement.className;
@@ -87,6 +68,10 @@ function main(){
         ||   parentClass4.className == "details")) continue;                  //WSG Parts     
         
         addHTML(labor,part_item,url);
+   
     }
+    // if(url.includes("wholesale")){
+    //     buttonInsert();
+    // }
 }
 main();

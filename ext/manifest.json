@@ -1,6 +1,6 @@
 {
   "name": "TomcatCPR Repair Price Tool",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "manifest_version": 3,
   "description": "Repair price display tool for MD and MS.",
   "homepage_url": "http://fake.com",
@@ -13,7 +13,7 @@
   "host_permissions": [
     "https://www.mobiledefenders.com/*",
     "https://www.mobilesentrix.com/*",
-	"https://www.wholesalegadgetparts.com/"
+	  "https://www.wholesalegadgetparts.com/"
   ],
   "content_scripts": [
     {
@@ -29,9 +29,10 @@
       "matches": [
         "https://www.mobiledefenders.com/*",
         "https://www.mobilesentrix.com/*",
-		"https://www.wholesalegadgetparts.com/*"
+		    "https://www.wholesalegadgetparts.com/*"
       ],
       "js": [
+        "src/inject/helper.js",
         "src/inject/inject.js"
       ]
     }
