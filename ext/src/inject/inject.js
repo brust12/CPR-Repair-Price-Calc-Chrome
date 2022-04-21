@@ -18,7 +18,7 @@ function addHTML(labor,part_item,url){
 
     var costs_div = document.createElement('div');
     costs_div.className ="repair-div";
-    costs_div.style.color       = "black";
+    costs_div.style.color = "black";
     if(url.includes("mobiledefenders")){
         repair_div.style.paddingTop    = "5px";
         repair_div.style.paddingBottom = "5px";
@@ -36,6 +36,7 @@ function addHTML(labor,part_item,url){
 
     }
 
+
 function main(){
     //Check to see if were on a parts page or another page.
     let url = document.URL;
@@ -48,30 +49,11 @@ function main(){
     var labor = 55;
     if(tablets.some((word) => url.includes(word)))   labor = 75;
     if(consoles.some((word)=> url.includes(word)))   labor = 100;
-    var elements;
-    //Loop for adding prices
-    if(url.includes("sentrix") || url.includes("defenders"))    elements = document.getElementsByClassName("price");
-    if(url.includes("wholesale"))                               elements = document.getElementsByClassName("currency");
-    
-    for(const part_item of elements){   
-        //Looping through each price element on the page.
-        let parentclass = part_item.parentElement.className;
-        if(parentclass == "old-price") continue;    //skip if the price is a sale item.
-
-        //Checking if the parent class is one that would contain parts or skipping if its another price. EX: the cart price.
-        let parentClass4 = part_item.parentElement.parentElement.parentElement.parentElement;
-        let parentClass3 = part_item.parentElement.parentElement.parentElement;
-        if(!(parentClass4.className == "catalog-view-details-grid-hover"      //MD items page
-        ||   parentClass3.className == "cat_prod_cell"                        //MS items page
-        ||   parentClass4.className == "detailpage"                           //MS part page
-        ||   parentClass4.className == "product-info"                         //MD part page
-        ||   parentClass4.className == "details")) continue;                  //WSG Parts     
-        
-        addHTML(labor,part_item,url);
-   
+  
+    addPrices(labor);
+    if(url.includes("wholesale")){
+        buttonInsert();
     }
-    // if(url.includes("wholesale")){
-    //     buttonInsert();
-    // }
 }
+
 main();

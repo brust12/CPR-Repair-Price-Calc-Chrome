@@ -15,24 +15,63 @@ function deletePrices(){
     }
 }
 
+function updateLabor(labor){
+    let addedPrices = document.getElementsByClassName("repair-div");
+    for(const item of addedPrices){
+        console.log(item);
+    }
+
+
+}
+
+function addPrices(labor){
+    var elements;
+    //Loop for adding prices
+    let url = document.URL;
+    if(url.includes("sentrix") || url.includes("defenders"))    elements = document.getElementsByClassName("price");
+    if(url.includes("wholesale"))                               elements = document.getElementsByClassName("currency");
+    
+    for(const part_item of elements){   
+        //Looping through each price element on the page.
+        let parentclass = part_item.parentElement.className;
+        if(parentclass == "old-price") continue;    //skip if the price is a sale item.
+
+        //Checking if the parent class is one that would contain parts or skipping if its another price. EX: the cart price.
+        let parentClass4 = part_item.parentElement.parentElement.parentElement.parentElement;
+        let parentClass3 = part_item.parentElement.parentElement.parentElement;
+        if(!(parentClass4.className == "catalog-view-details-grid-hover"      //MD items page
+        ||   parentClass3.className == "cat_prod_cell"                        //MS items page
+        ||   parentClass4.className == "detailpage"                           //MS part page
+        ||   parentClass4.className == "product-info"                         //MD part page
+        ||   parentClass4.className == "details")) continue;                  //WSG Parts     
+        
+        addHTML(labor,part_item,url);
+   
+    }
+
+}
 function buttonInsert(){
-    button = document.createElement("button");
-    button.style.textContent = "Delete";
-    contain = document.createElement("span");
-    title = document.createElement("label");
+    let delete_button = document.createElement("button");
+    let add_button = document.createElement("button");
+    add_button.textContent ="Add Prices";
+    delete_button.style.textContent = "Delete";
+    let contain = document.createElement("span");
+    let title = document.createElement("label");
     title.innerHTML = "Delete";
 
     title.style.cssText= `font-size:22px;`;
-    button.addEventListener("click",deletePrices);
-    center = document.getElementById("center");
+    delete_button.addEventListener("click",deletePrices);
+    add_button.addEventListener("click",updateLabor);
+    let center = document.getElementById("center");
    
 
     
-    button.textContent = "Remove Prices";
+    delete_button.textContent = "Remove Prices";
     contain.style.cssText = 
         `font-size: 10px; display:inline-block;width: 200px;float:right;bottom:2px;right:100px;position:fixed;`;
     contain.appendChild(title);
-    contain.appendChild(button);
+    contain.appendChild(delete_button);
+    contain.appendChild(add_button);
     center.appendChild(contain);
 }
 
