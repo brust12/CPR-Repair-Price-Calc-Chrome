@@ -28,6 +28,8 @@ function addHTML(labor,part_item,url){
        repair_div.appendChild(document.createTextNode(" Repair Price: $"+repair_price),breakr);
        var part_price = repair_price +.01 - labor;
        costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price - .01) + " - Labor: $" + labor));
+       costs_div.appendChild(document.createElement('select'));
+    
 
        var parent = part_item.parentElement.parentElement;
        parent.insertBefore(breakr,parent.lastChild);
