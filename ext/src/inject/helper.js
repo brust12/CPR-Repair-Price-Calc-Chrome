@@ -26,8 +26,8 @@ function addPrices(labor){
     var elements;
     //Loop for adding prices
     let url = document.URL;
-    if(url.includes("sentrix") || url.includes("defenders"))    elements = document.getElementsByClassName("price");
-    if(url.includes("wholesale"))                               elements = document.getElementsByClassName("currency");
+    if(url.includes("sentrix") || url.includes("defenders") || url.includes("cpr"))    elements = document.getElementsByClassName("price");
+    // if(url.includes("wholesale"))                               elements = document.getElementsByClassName("currency");
     
     for(const part_item of elements){   
         //Looping through each price element on the page.
