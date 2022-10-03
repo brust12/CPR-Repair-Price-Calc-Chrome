@@ -1,28 +1,26 @@
 /**
  * @author Riley Brust <brust.developer@gmail.com>
  * @version 0.0.5
- * @description Helper functions to delete and add to the page
+ * @description Helper functions to add prices to the page.
  * @file helper.js
  */
-function deletePrices(){
-    var elements = document.getElementsByClassName("repair-div");
-    let length = elements.length;
-    if(length == 0) return;
-    let item;
-    for(let i=length-1;i >=0;i--){
-        item = elements[i];
-       item.remove();
-    }
-}
+// function deletePrices(){
+//     var elements = document.getElementsByClassName("repair-div");
+//     let length = elements.length;
+//     if(length == 0) return;
+//     let item;
+//     for(let i=length-1;i >=0;i--){
+//         item = elements[i];
+//        item.remove();
+//     }
+// }
 
-function updateLabor(labor){
-    let addedPrices = document.getElementsByClassName("repair-div");
-    for(const item of addedPrices){
-        console.log(item);
-    }
-
-
-}
+// function updateLabor(labor){
+//     let addedPrices = document.getElementsByClassName("repair-div");
+//     for(const item of addedPrices){
+//         console.log(item);
+//     }
+// }
 
 function addPrices(labor){
     var elements;
@@ -50,30 +48,7 @@ function addPrices(labor){
     }
 
 }
-function buttonInsert(){
-    let delete_button = document.createElement("button");
-    let add_button = document.createElement("button");
-    add_button.textContent ="Add Prices";
-    delete_button.style.textContent = "Delete";
-    let contain = document.createElement("span");
-    let title = document.createElement("label");
-    title.innerHTML = "Delete";
 
-    title.style.cssText= `font-size:22px;`;
-    delete_button.addEventListener("click",deletePrices);
-    add_button.addEventListener("click",updateLabor);
-    let center = document.getElementById("center");
-   
-
-    
-    delete_button.textContent = "Remove Prices";
-    contain.style.cssText = 
-        `font-size: 10px; display:inline-block;width: 200px;float:right;bottom:2px;right:100px;position:fixed;`;
-    contain.appendChild(title);
-    contain.appendChild(delete_button);
-    contain.appendChild(add_button);
-    center.appendChild(contain);
-}
 
 function calcRepair(partcost,labor){
 	var mult;

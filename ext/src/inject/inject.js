@@ -27,9 +27,7 @@ function addHTML(labor,part_item,url){
        var breakr = document.createElement("br");// for moving the price to a new line on Sentrix part page.
        repair_div.appendChild(document.createTextNode(" Repair Price: $"+repair_price),breakr);
        var part_price = repair_price +.01 - labor;
-       costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price - .01) + " - Labor: $" + labor));
-       costs_div.appendChild(document.createElement('select'));
-    
+       costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price - .01) + " - Labor: $" + labor));    
 
        var parent = part_item.parentElement.parentElement;
        parent.insertBefore(breakr,parent.lastChild);
@@ -53,9 +51,6 @@ function main(){
     if(consoles.some((word)=> url.includes(word)))   labor = 100;
   
     addPrices(labor);
-    if(url.includes("wholesale")){
-        buttonInsert();
-    }
 }
 
 main();
