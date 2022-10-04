@@ -4,35 +4,17 @@
  * @description Helper functions to add prices to the page.
  * @file helper.js
  */
-// function deletePrices(){
-//     var elements = document.getElementsByClassName("repair-div");
-//     let length = elements.length;
-//     if(length == 0) return;
-//     let item;
-//     for(let i=length-1;i >=0;i--){
-//         item = elements[i];
-//        item.remove();
-//     }
-// }
-
-// function updateLabor(labor){
-//     let addedPrices = document.getElementsByClassName("repair-div");
-//     for(const item of addedPrices){
-//         console.log(item);
-//     }
-// }
 
 function addPrices(labor){
     var elements;
     //Loop for adding prices
     let url = document.URL;
     if(url.includes("sentrix") || url.includes("defenders") || url.includes("cpr"))    elements = document.getElementsByClassName("price");
-    // if(url.includes("wholesale"))                               elements = document.getElementsByClassName("currency");
     
     for(const part_item of elements){   
         //Looping through each price element on the page.
         let parentclass = part_item.parentElement.className;
-        if(parentclass == "old-price") continue;    //skip if the price is a sale item.
+        if(parentclass == "old-price") continue;    //skip if the price is a sale item on MD.
 
         //Checking if the parent class is one that would contain parts or skipping if its another price. EX: the cart price.
         let parentClass4 = part_item.parentElement.parentElement.parentElement.parentElement;
@@ -44,9 +26,7 @@ function addPrices(labor){
         ||   parentClass4.className == "details")) continue;                  //WSG Parts     
         
         addHTML(labor,part_item,url);
-   
     }
-
 }
 
 
@@ -66,6 +46,6 @@ function calcRepair(partcost,labor){
 		mult =1.25;
 	}
 	var price = (partcost * mult) + labor;
-	var rounded = Math.ceil(price/10) * 10;
+	var rounded = Math.ceil(price / 10) * 10;
 	return Math.round(rounded) - .01;
 }
