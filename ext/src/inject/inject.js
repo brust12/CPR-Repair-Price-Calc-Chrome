@@ -1,6 +1,6 @@
 /**
  * @author Riley Brust <brust.developer@gmail.com>
- * @version 0.0.5
+ * @version 0.0.6
  * @description Chrome extention that displays repair cost in the websites.
  * @file inject.js
  */
@@ -25,12 +25,16 @@ function addHTML(labor,part_item,url){
     }
        //Inserting the price elements
        var breakr = document.createElement("br");// for moving the price to a new line on Sentrix part page.
-       repair_div.appendChild(document.createTextNode(" Repair Price: $"+repair_price),breakr);
+       var breakr2 = document.createElement("br");
+       repair_div.appendChild(document.createTextNode(" Repair Price: $"+repair_price),breakr,breakr2);
        var part_price = repair_price +.01 - labor;
-       costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price - .01) + " - Labor: $" + labor));    
+       costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price - .01) + " • Labor: $" + labor));    
 
        var parent = part_item.parentElement.parentElement;
        parent.insertBefore(breakr,parent.lastChild);
+       if(!url.includes("replacement-parts"))
+        parent.insertBefore(breakr2,parent.lastChild);
+
        parent.insertBefore(repair_div,parent.lastChild);
        parent.insertBefore(costs_div,parent.lastChild);
 
