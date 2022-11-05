@@ -12,3 +12,14 @@
     left: 45px;
     top: 260px;
 } */
+
+body .deal-category li.item {
+    min-height: 568px!important;
+}
+
+.product-view .productviewcart .add-to-box{
+    margin-top: 0px !important;
+}
+.repair-div{
+    height: 20px;
+}

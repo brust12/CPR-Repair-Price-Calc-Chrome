@@ -1,6 +1,6 @@
 /**
  * @author Riley Brust <brust.developer@gmail.com>
- * @version 0.0.5
+ * @version 0.0.6
  * @description Helper functions to add prices to the page.
  * @file helper.js
  */

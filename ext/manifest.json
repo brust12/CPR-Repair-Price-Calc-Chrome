@@ -19,7 +19,8 @@
     {
       "matches": [
         "https://www.mobiledefenders.com/*",
-        "https://www.mobilesentrix.com/*"
+        "https://www.mobilesentrix.com/*",
+        "https://www.cpr.parts/*"
       ],
       "css": [
         "src/inject/inject.css"

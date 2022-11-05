@@ -32,7 +32,7 @@ function addHTML(labor,part_item,url){
 
        var parent = part_item.parentElement.parentElement;
        parent.insertBefore(breakr,parent.lastChild);
-       if(!url.includes("replacement-parts"))
+       if(!url.includes("replacement-parts") & url.includes("cpr.parts"))
         parent.insertBefore(breakr2,parent.lastChild);
 
        parent.insertBefore(repair_div,parent.lastChild);
