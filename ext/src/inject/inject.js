@@ -23,20 +23,22 @@ function addHTML(labor,part_item,url){
         repair_div.style.paddingTop    = "5px";
         repair_div.style.paddingBottom = "5px";
     }
-       //Inserting the price elements
-       var breakr = document.createElement("br");// for moving the price to a new line on Sentrix part page.
-       var breakr2 = document.createElement("br");
-       repair_div.appendChild(document.createTextNode(" Repair Price: $"+repair_price),breakr,breakr2);
-       var part_price = repair_price +.01 - labor;
-       costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price - .01) + " • Labor: $" + labor));    
 
-       var parent = part_item.parentElement.parentElement;
-       parent.insertBefore(breakr,parent.lastChild);
-       if(!url.includes("replacement-parts") & url.includes("cpr.parts"))
-        parent.insertBefore(breakr2,parent.lastChild);
+    repair_div.style.display = "inline-flex"
+    //Inserting the price elements
+    var breakr = document.createElement("br");// for moving the price to a new line on Sentrix part page.
+    var breakr2 = document.createElement("br");
+    repair_div.appendChild(document.createTextNode(" Repair Price: $"+repair_price),breakr,breakr2);
+    var part_price = repair_price +.01 - labor;
+    costs_div.appendChild(document.createTextNode("Part Price: $" + Number(part_price - .01) + " • Labor: $" + labor));    
 
-       parent.insertBefore(repair_div,parent.lastChild);
-       parent.insertBefore(costs_div,parent.lastChild);
+    var parent = part_item.parentElement.parentElement;
+    parent.insertBefore(breakr,parent.lastChild);
+    if(!url.includes("replacement-parts") & url.includes("cpr.parts"))
+    parent.insertBefore(breakr2,parent.lastChild);
+
+    parent.insertBefore(repair_div,parent.lastChild);
+    parent.insertBefore(costs_div,parent.lastChild);
 
     }
 
