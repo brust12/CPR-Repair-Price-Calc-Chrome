@@ -1,6 +1,6 @@
 /**
  * @author Riley Brust <brust.developer@gmail.com>
- * @version 0.0.6
+ * @version 0.0.7
  * @description Helper functions to add prices to the page.
  * @file helper.js
  */
@@ -12,6 +12,7 @@ function addPrices(labor){
     if(url.includes("sentrix") || url.includes("defenders") || url.includes("cpr"))    elements = document.getElementsByClassName("price");
     
     for(const part_item of elements){   
+        console.log(part_item)
         //Looping through each price element on the page.
         let parentclass = part_item.parentElement.className;
         if(parentclass == "old-price") continue;    //skip if the price is a sale item on MD.
@@ -20,7 +21,8 @@ function addPrices(labor){
         let parentClass4 = part_item.parentElement.parentElement.parentElement.parentElement;
         let parentClass3 = part_item.parentElement.parentElement.parentElement;
         if(!(parentClass4.className == "catalog-view-details-grid-hover"      //MD items page
-        ||   parentClass3.className == "cat_prod_cell"                        //MS items page
+        // ||   parentClass3.className == "cat_prod_cell"                        //MS items page OLD
+        || parentClass3.className == "price-qty-block"                          //MS items page
         ||   parentClass4.className == "detailpage"                           //MS part page
         ||   parentClass4.className == "product-info"                         //MD part page
         ||   parentClass4.className == "details")) continue;                  //WSG Parts     

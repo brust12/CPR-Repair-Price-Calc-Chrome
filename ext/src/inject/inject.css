@@ -23,3 +23,8 @@ body .deal-category li.item {
 .repair-div{
     height: 20px;
 }
+
+.price-div{
+    border-bottom: solid black 1px
+
+}

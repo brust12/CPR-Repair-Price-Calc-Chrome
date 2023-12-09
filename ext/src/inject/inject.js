@@ -1,6 +1,6 @@
 /**
  * @author Riley Brust <brust.developer@gmail.com>
- * @version 0.0.6
+ * @version 0.0.7
  * @description Chrome extention that displays repair cost in the websites.
  * @file inject.js
  */
@@ -14,17 +14,20 @@ function addHTML(labor,part_item,url){
     var repair_div = document.createElement('div');
     repair_div.style.color      = "#e3051b";
     repair_div.style.fontWeight = "bold";
-    repair_div.className ="repair-div";
+    repair_div.className ="price-div";
+    // repair_div.style.borderBottom ='solid black 2px'
 
     var costs_div = document.createElement('div');
     costs_div.className ="repair-div";
     costs_div.style.color = "black";
+    
+    
     if(url.includes("mobiledefenders")){
         repair_div.style.paddingTop    = "5px";
         repair_div.style.paddingBottom = "5px";
     }
 
-    repair_div.style.display = "inline-flex"
+    repair_div.style.display = "inline"
     //Inserting the price elements
     var breakr = document.createElement("br");// for moving the price to a new line on Sentrix part page.
     var breakr2 = document.createElement("br");
